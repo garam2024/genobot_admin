@@ -39,10 +39,21 @@ public class frontController extends HttpServlet {
 		String moveURL = con.execute(request, response);
 		String call_state = (String)request.getParameter("state");
 		request.setAttribute("state",call_state);
-		//response.sendRedirect(moveURL); 
-		System.out.println("froncontoller에서 보기"+call_state);
-		RequestDispatcher dis = request.getRequestDispatcher(moveURL);
-		dis.forward(request, response);
+		if (call_state==null) {
+			System.out.println("hello");
+			response.sendRedirect(moveURL); 
+			
+		}else {
+			System.out.println(call_state);
+			
+			
+			System.out.println("froncontoller에서 보기"+call_state);
+			RequestDispatcher dis = request.getRequestDispatcher(moveURL);
+			dis.forward(request, response);
+			
+		}
+		
+		
 		
 		
 	}

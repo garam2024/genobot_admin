@@ -207,7 +207,7 @@
 			qnaDAO dao = new qnaDAO();
 			String state = (String)request.getAttribute("state");
 			System.out.print("callstate?"+state);
-			ArrayList<qnaVO> arr = dao.stateSelect(state);			
+			ArrayList<qnaVO> arr = dao.stateSelect("상담중");			
 			for(int i=0;i<arr.size();i++){
 			%>
                 <tr onclick="location.href='detailCon.do?boardnum=<%=arr.get(i).getBoardnum()%>'">
