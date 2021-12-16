@@ -161,10 +161,10 @@
           <div class="d-flex justify-content-between mt-4 mb-2">
             <div class="btn-wrap btn-status">
             <form action="callState.jsp" method="post">
-              <button type="submit" name = "all" class="btn btn-secondary btn-sm selected">전체</button>
-              <button type="submit" name ="wait" class="btn btn-secondary btn-sm">상담대기</button>
-              <button type="submit" name = "ing" class="btn btn-secondary btn-sm">상담중</button>
-              <button type="submit" name = "finish" class="btn btn-secondary btn-sm">상담완료</button>
+              <button type="submit" name = "state" value="전체" class="btn btn-secondary btn-sm selected">전체</button>
+              <button type="submit" name ="state" value="상담대기" class="btn btn-secondary btn-sm">상담대기</button>
+              <button type="submit" name = "state" value="상담중" class="btn btn-secondary btn-sm">상담중</button>
+              <button type="submit" name = "state" value="상담완료" class="btn btn-secondary btn-sm">상담완료</button>
               </form>
             </div>
             <!-- 검색 -->
@@ -207,7 +207,7 @@
 			qnaDAO dao = new qnaDAO();
 			String state = (String)request.getAttribute("state");
 			System.out.print("callstate?"+state);
-			ArrayList<qnaVO> arr = dao.stateSelect("상담중");			
+			ArrayList<qnaVO> arr = dao.stateSelect(state);			
 			for(int i=0;i<arr.size();i++){
 			%>
                 <tr onclick="location.href='detailCon.do?boardnum=<%=arr.get(i).getBoardnum()%>'">

@@ -182,7 +182,7 @@
             <div class="btn-wrap btn-status">
             <form action="waitingCon.do" method="post">
         
-              <button type="submit" name = "state"  value = "전체" class="btn btn-secondary btn-sm selected">전체</button>
+              <button type="submit" name = "state"  value = "전체" class="btn btn-secondary btn-sm" formaction="board_list.jsp">전체</button>
               <button type="submit" name ="state"  value = "상담대기" class="btn btn-secondary btn-sm">상담대기</button>
               <button type="submit" name = "state" value = "상담중" class="btn btn-secondary btn-sm">상담중</button>
               <button type="submit" name = "state" value = "상담완료" class="btn btn-secondary btn-sm">상담완료</button>
@@ -226,8 +226,26 @@
 
 				try {
 				
+			//qnaDAO dao = new qnaDAO();
+			//ArrayList<qnaVO> arr = dao.select();
+			
+			
+			
 			qnaDAO dao = new qnaDAO();
-			ArrayList<qnaVO> arr = dao.select();			
+			String state = (String)request.getAttribute("state");
+			System.out.print("board_list_state"+state);
+			ArrayList<qnaVO> arr = new ArrayList<qnaVO>();
+			if (state == null || state=="전체"){
+				 arr = dao.select();
+				 System.out.print("board_list_arr"+arr);
+			}
+			else {
+				 arr = dao.stateSelect(state);
+				 System.out.print("board_list_arr_else"+arr);
+				
+			}
+			
+			
 			for(int i=0;i<arr.size();i++){
 			%>
                 <tr onclick="location.href='detailCon.do?boardnum=<%=arr.get(i).getBoardnum()%>'">

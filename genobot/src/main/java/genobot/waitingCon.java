@@ -12,11 +12,11 @@ public class waitingCon implements Command {
 		String call_state = request.getParameter("state");
 		System.out.print("화면 상태?"+call_state);
 		qnaDAO dao = new qnaDAO();
-		ArrayList<qnaVO> arr = dao.stateSelect(call_state);
+		//ArrayList<qnaVO> arr = dao.stateSelect(call_state);
 		
 		
-		request.setAttribute("state",call_state);
-		moveURL = "callState.jsp";		
+		//request.setAttribute("state",call_state);
+		moveURL = "board_list.jsp";		
 		return moveURL;
 	}
 }

@@ -75,7 +75,7 @@ public class qnaDAO {
 		try {
 			getConn();
 
-			sql = "update call_list set call_state = '���Ϸ�', ck_date=sysdate(), call_result=? where boardnum=?";
+			sql = "update call_list set call_state = '상담완료', ck_date=sysdate(), call_result=? where boardnum=?";
 
 			psmt = conn.prepareStatement(sql);
 			
