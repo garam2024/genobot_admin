@@ -1,17 +1,3 @@
-//검색 데이터를 받을 
-
-/*window.onload = function (){
-
-
-}*/
-
-
-$.ajax({
-url:'selectAjaxCon.do',
-success: function (data){
-console.log("data",data)
-}
-})
 
 
 class Person {
@@ -40,7 +26,7 @@ ck_date:""
 
 let all_table_tr = document.getElementById("datable").querySelectorAll('tr')
 //테이블 tr개수 == tablearr.length
-
+console.log(all_table_tr)
 for (var j=0; j<all_table_tr.length; j++){
 for (var i=0; i<all_table_tr[j].children.length; i++){
 tablelist[Object.keys(tablelist)[i]] = all_table_tr[j].children[i].innerText;

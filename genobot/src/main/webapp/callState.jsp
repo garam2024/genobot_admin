@@ -1,6 +1,7 @@
 <%@page import="genobot.qnaVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="genobot.qnaDAO"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!doctype html>
@@ -198,31 +199,37 @@
                   <th style="width:15%">완료시간</th>
                 </tr>
               </thead>
-              <tbody id="datable" hidden>
-               <% 
+              <tbody id="datable" >
+                 <% 
+
 				try {
 				
 			qnaDAO dao = new qnaDAO();
-			String state = request.getParameter("state");
+			String state = (String)request.getAttribute("state");
+			System.out.print("callstate?"+state);
 			ArrayList<qnaVO> arr = dao.stateSelect(state);			
 			for(int i=0;i<arr.size();i++){
 			%>
-              
-	             <tr onclick="location.href='detailCon.do?boardnum=<%=arr.get(i).getBoardnum()%>'">
-                  	<td class="text-center"><%=arr.get(i).getBoardnum()%></td>
-                  	<td><%=arr.get(i).getUser_name()%></td>
-					<td><%=arr.get(i).getPhone_num() %></td>			
-					<td><%=arr.get(i).getComment()%></td>
-					<td><%=arr.get(i).getCall_state()%></td>
-					<td><%=arr.get(i).getReg_date()%></td>
-					<td><%=arr.get(i).getCk_date()%></td>					
-				</tr>												
-					<%
+                <tr onclick="location.href='detailCon.do?boardnum=<%=arr.get(i).getBoardnum()%>'">
+                  <td class="text-center"><%=arr.get(i).getBoardnum()%></td>
+                  <td><%=arr.get(i).getUser_name()%></td>
+				  <td><%=arr.get(i).getPhone_num() %></td>
+                  <td><%=arr.get(i).getComment()%></td>
+                  <td><%=arr.get(i).getCall_state()%></td>
+				  <td><%=arr.get(i).getReg_date()%></td>
+				  <%if(arr.get(i).getCk_date() == null){ %>
+				  	<td>-</td>
+				  <%}else{ %>	
+				  	<td><%=arr.get(i).getCk_date()%></td>
+				  <%} %>
+                </tr>
+                
+                <%
 						}
 					} catch (Exception e) {
 					e.printStackTrace();
 					}
-					%>   
+					%>  
                
               </tbody>
                <tbody id="inputdata">

@@ -14,8 +14,6 @@ public class searchCon implements Command {
 		String call_state = request.getParameter("state");
 		System.out.print("화면 상태?"+call_state);
 		qnaDAO dao = new qnaDAO();
-		qnaVO state = dao.stateSelect(call_state);
-
 				
 		moveURL = "board_list.jsp";
 		

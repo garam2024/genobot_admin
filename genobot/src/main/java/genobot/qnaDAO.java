@@ -154,8 +154,8 @@ public class qnaDAO {
 		return vo;		
 	}
 	
-public qnaVO stateSelect(String call_state){
-		
+public ArrayList<qnaVO> stateSelect(String call_state){
+		ArrayList<qnaVO> arr = new ArrayList<qnaVO>();
 		try {
 			getConn();
 			sql = "select * from call_list where call_state = ?";
@@ -174,6 +174,8 @@ public qnaVO stateSelect(String call_state){
 				String getcall_result = rs.getString(8);
 				
 				vo = new qnaVO(getuser_name, getphone_num, getcomment, getcall_state, getboardnum, getreg_date, getck_date, getcall_result);
+			arr.add(vo);
+			
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -181,7 +183,7 @@ public qnaVO stateSelect(String call_state){
 		}finally {
 			close();
 		}
-		return vo;
+		return arr;
 		
 		
 	}

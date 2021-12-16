@@ -1,6 +1,8 @@
 package genobot;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,10 +32,19 @@ public class frontController extends HttpServlet {
 			con = new detailCon();
 		} else if(result.equals("searchCon.do")) {
 			con = new searchCon();
+		}else if (result.equals("waitingCon.do")) {
+			con = new waitingCon();
 		}
 		
 		String moveURL = con.execute(request, response);
-		response.sendRedirect(moveURL);
+		String call_state = (String)request.getParameter("state");
+		request.setAttribute("state",call_state);
+		//response.sendRedirect(moveURL); 
+		System.out.println("froncontoller에서 보기"+call_state);
+		RequestDispatcher dis = request.getRequestDispatcher(moveURL);
+		dis.forward(request, response);
+		
+		
 	}
 	
 	
