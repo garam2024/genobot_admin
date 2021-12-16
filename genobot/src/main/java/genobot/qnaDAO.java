@@ -19,9 +19,9 @@ public class qnaDAO {
 	public void getConn() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/test";
+			String url = "jdbc:mysql://localhost:3307/talkbot";
 			String dbid = "root";
-			String dbpw = "0000";
+			String dbpw = "2024";
 			conn = DriverManager.getConnection(url, dbid, dbpw);
 
 		} catch (Exception e) {

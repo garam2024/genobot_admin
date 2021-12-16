@@ -29,12 +29,12 @@ public class frontController extends HttpServlet {
 			con = new searchCon();
 		}else if (result.equals("waitingCon.do")) {
 			con = new waitingCon();
-		}		
+		}
 		String moveURL = con.execute(request, response);
 		String call_state = (String)request.getParameter("state");
 		
 		if (call_state==null || call_state =="전체") {
-			
+		
 			request.setAttribute("state","전체");	 
 		}else {
 			
@@ -49,5 +49,12 @@ public class frontController extends HttpServlet {
 		
 		
 		
+		
+		
+	}
+	public void controll() {
+	    System.out.println("Hi__________________________________________________");
+	    
 	}
 }
+

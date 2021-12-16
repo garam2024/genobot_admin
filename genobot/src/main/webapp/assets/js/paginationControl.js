@@ -45,7 +45,7 @@ var dataHtml ="";
                 $.each(data, function (index, item) {
 			
 				
-					dataHtml += '<tr>'
+					dataHtml += `<tr onclick=location.href='detailCon.do?boardnum=${Object.values(item)[0]}'>`
 					for (var i of Object.values(item)){
 				 dataHtml += '<td>' + i+'</td>';
 				}
@@ -65,6 +65,10 @@ var dataHtml ="";
 
 })
 
+//var inputdata = document.getElementById("inputdata")
+//inputdata.addEventListener('click', function(e){
+//console.log("board_num",e.target.parent.children[0])
+//})
 
 
 

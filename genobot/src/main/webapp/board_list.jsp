@@ -77,7 +77,20 @@
           <div class="chart-holder">
             <div class="lft-chart">
               <canvas id="first-chart"></canvas>
+              <%  qnaDAO dao = new qnaDAO();
+	                 
+	         ArrayList<qnaVO>   arr1 = dao.stateSelect("상담중");
+	         ArrayList<qnaVO>  arr2 = dao.stateSelect("상담완료");
+	         ArrayList<qnaVO>   arr3 = dao.stateSelect("상담대기");
+	         System.out.println("사이즈나오나???");
+	         System.out.println(arr1.size());
+	         System.out.println(arr2.size());
+	         System.out.println(arr3.size());
+	            
+%>	         
+
               <script>
+         
                 const DATA_COUNT = 5;
                 const NUMBER_CFG = {
                   count: DATA_COUNT,
@@ -93,7 +106,8 @@
                   ],
                   datasets: [{
 	               	  label: '상담처리상태',
-	               	  data: [300, 50, 100],
+	               	 
+	               	  data: [<%=arr3.size()%>,  <%=arr1.size()%>,  <%=arr2.size()%>],
 	               	  backgroundColor: [
 	               	  '#99d5fb',
 	               	  '#cef6dd',
@@ -230,7 +244,7 @@
 			//ArrayList<qnaVO> arr = dao.select();
 			
 			
-		   qnaDAO dao = new qnaDAO();
+	
 	         String state = (String)request.getAttribute("state");
 	         
 	         ArrayList<qnaVO> arr = new ArrayList<qnaVO>();
