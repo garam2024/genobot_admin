@@ -12,7 +12,7 @@ public class searchCon implements Command {
 		
 		String moveURL;
 		String call_state = request.getParameter("state");
-		System.out.print("³ª¿À´Ï?"+call_state);
+		System.out.print("í™”ë©´ ìƒíƒœ?"+call_state);
 		qnaDAO dao = new qnaDAO();
 		qnaVO state = dao.stateSelect(call_state);
 

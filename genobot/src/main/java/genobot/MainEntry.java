@@ -9,14 +9,14 @@ import java.sql.ResultSet;
 public class MainEntry {
 	
 	 public static void main(String[] args) {
-	        // DB Á¢¼Ó °´Ã¼¼±¾ð
+	        // DB ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
 	        Connection conn = null;
 	 
 	        try {
-	            // Maria db µå¶óÀÌ¹ö ·Îµå
+	            // Maria db ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½Îµï¿½
 	            Class.forName("com.mysql.cj.jdbc.Driver");
-	            // µ¥ÀÌÅÍº£ÀÌ½º Á¢¼Ó
-	            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/talkbot", "root", "!@#genobot123");
+	            // ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/talkbot", "root", "2024");
 	        } catch (Exception e) {
 	            System.out.println(e.toString());
 	        } finally {
@@ -26,9 +26,9 @@ public class MainEntry {
 	            }
 	        }
 	        if (conn != null) {
-	            System.out.println("Á¢¼Ó¼º°ø");
+	            System.out.println("ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½");
 	        } else {
-	        	System.out.println("Á¢¼Ó½ÇÆÐ");
+	        	System.out.println("ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½");
 	        }
 	 
 	    }

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class frontController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//�ȳ��ϼ��� dddd
+//�ȳ��ϼ��� dddd
 		request.setCharacterEncoding("utf-8");
 		
 		System.out.println("Frontcontroller");
@@ -22,7 +22,8 @@ public class frontController extends HttpServlet {
 		String result = reqURI.substring(path.length()+1);
 	
 		genobot.Command con = null;
-		
+		System.out.println("프론트 컨트롤러야 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+		System.out.println(result);
 		if(result.equals("updateCon.do")) {
 			con = new updateCon();			
 		} else if(result.equals("detailCon.do")) {
@@ -30,9 +31,12 @@ public class frontController extends HttpServlet {
 		} else if(result.equals("searchCon.do")) {
 			con = new searchCon();
 		}
+		
 		String moveURL = con.execute(request, response);
 		response.sendRedirect(moveURL);
 	}
+	
+	
 		
 }
 

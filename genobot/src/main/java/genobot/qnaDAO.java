@@ -19,9 +19,9 @@ public class qnaDAO {
 	public void getConn() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/test";
+			String url = "jdbc:mysql://localhost:3307/talkbot";
 			String dbid = "root";
-			String dbpw = "0000";
+			String dbpw = "2024";
 			conn = DriverManager.getConnection(url, dbid, dbpw);
 
 		} catch (Exception e) {
@@ -75,7 +75,7 @@ public class qnaDAO {
 		try {
 			getConn();
 
-			sql = "update call_list set call_state = '»ó´ã¿Ï·á', ck_date=sysdate(), call_result=? where boardnum=?";
+			sql = "update call_list set call_state = 'ï¿½ï¿½ï¿½Ï·ï¿½', ck_date=sysdate(), call_result=? where boardnum=?";
 
 			psmt = conn.prepareStatement(sql);
 			
