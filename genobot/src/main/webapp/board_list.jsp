@@ -230,21 +230,19 @@
 			//ArrayList<qnaVO> arr = dao.select();
 			
 			
-			
-			qnaDAO dao = new qnaDAO();
-			String state = (String)request.getAttribute("state");
-			System.out.print("board_list_state"+state);
-			ArrayList<qnaVO> arr = new ArrayList<qnaVO>();
-			if (state == null || state=="전체"){
-				 arr = dao.select();
-				 System.out.print("board_list_arr"+arr);
-			}
-			else {
-				 arr = dao.stateSelect(state);
-				 System.out.print("board_list_arr_else"+arr);
-				
-			}
-			
+		   qnaDAO dao = new qnaDAO();
+	         String state = (String)request.getAttribute("state");
+	         
+	         ArrayList<qnaVO> arr = new ArrayList<qnaVO>();
+	         if (state == null || state=="전체"){
+	             arr = dao.select();
+	            
+	         }
+	         else {
+	             arr = dao.stateSelect(state);
+	            
+	            
+	         }
 			
 			for(int i=0;i<arr.size();i++){
 			%>

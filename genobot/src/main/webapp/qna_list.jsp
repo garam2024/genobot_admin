@@ -46,6 +46,27 @@
 
   <div class="container-fluid">
     <div class="row">
+      <!-- navigation -->
+      <!-- <nav id="sidebarMenu" class="bg-light sidebar collapse show">
+          <div class="sidebar-sticky pt-4">
+            <h1 class="h5 title">상담 요청 정보 관리</h1>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link on" href="#">상담 요청 정보</a>
+                <ul class="sub-menu">
+                  <li class="nav-item">
+                    <a class="nav-link on" href="#">상담 요청 목록</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">상담 완료 목록</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav> -->
+      <!-- // navigation -->
+
       <main role="main" class="main px-4">
         <div class="container">
           <h1 class="h2 pt-4 pb-3">수정 화면 목록 타이틀</h1>
@@ -68,15 +89,15 @@
                     '상담완료'
                   ],
                   datasets: [{
-                    label: '상담처리상태',
-                    data: [300, 50, 100],
-                    backgroundColor: [
-                      'rgb(255, 99, 132)',
-                      'rgb(54, 162, 235)',
-                      'rgb(255, 205, 86)'
-                    ],
-                    hoverOffset: 4
-                  }]
+	               	  label: '상담처리상태',
+	               	  data: [300, 50, 100],
+	               	  backgroundColor: [
+	               	  '#99d5fb',
+	               	  '#cef6dd',
+	               	  '#ffcbcb'
+	               	  ],
+	               	  hoverOffset: 4
+	               	  }]
                 };
 
                 const configChartFirst = {
@@ -193,24 +214,29 @@
                   <th style="width:15%">완료시간</th>
                 </tr>
               </thead>
-               <% 
+              <tbody>
+                <% 
 				try {
 				
 			qnaDAO dao = new qnaDAO();
 			ArrayList<qnaVO> arr = dao.select();			
 			for(int i=0;i<arr.size();i++){
 			%>
-              <tbody>
-	             <tr onclick="location.href='detailCon.do?boardnum=<%=arr.get(i).getBoardnum()%>'">
-                  	<td class="text-center"><%=arr.get(i).getBoardnum()%></td>
-                  	<td><%=arr.get(i).getUser_name()%></td>
-					<td><%=arr.get(i).getPhone_num() %></td>			
-					<td><%=arr.get(i).getComment()%></td>
-					<td><%=arr.get(i).getCall_state()%></td>
-					<td><%=arr.get(i).getReg_date()%></td>
-					<td><%=arr.get(i).getCk_date()%></td>					
-				</tr>												
-					<%
+                <tr onclick="location.href='detailCon.do?boardnum=<%=arr.get(i).getBoardnum()%>'">
+                  <td class="text-center"><%=arr.get(i).getBoardnum()%></td>
+                  <td><%=arr.get(i).getUser_name()%></td>
+				  <td><%=arr.get(i).getPhone_num() %></td>
+                  <td><%=arr.get(i).getComment()%></td>
+                  <td><%=arr.get(i).getCall_state()%></td>
+				  <td><%=arr.get(i).getReg_date()%></td>
+				  <%if(arr.get(i).getCk_date() == null){ %>
+				  	<td>-</td>
+				  <%}else{ %>	
+				  	<td><%=arr.get(i).getCk_date()%></td>
+				  <%} %>
+                </tr>
+                
+                <%
 						}
 					} catch (Exception e) {
 					e.printStackTrace();
