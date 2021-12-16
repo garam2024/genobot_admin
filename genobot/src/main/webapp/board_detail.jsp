@@ -69,11 +69,11 @@
 		qnaVO result = (qnaVO)session.getAttribute("QnaOne");	
 		%>
           <!-- bodyContent -->
-          <form class="needs-validation" action = "updateCon.do" method ="post" novalidate>
+          <form class="needs-validation" method ="post" novalidate>
             <div class="row">
               <div class="form-group col-6">
                 <label for="field-id">번호</label>
-                <input type="text" class="form-control" id="field-id" name="boardnum" placeholder="" value="<%=result.getBoardnum() %>" required>
+                <input type="text" class="form-control" id="field-id" name="boardnum" placeholder="" value="<%=result.getBoardnum() %>" readonly>
                 <!-- alert feedback -->
                 <div class="invalid-feedback">
                   Valid first name is required.
@@ -81,7 +81,7 @@
               </div>
               <div class="form-group col-6">
                 <label for="field-id">처리상태</label>
-                <input type="text" class="form-control" id="field-id" name="call_state" placeholder="" value="<%=result.getCall_state() %>" required>
+                <input type="text" class="form-control" id="field-id" name="call_state" placeholder="" value="<%=result.getCall_state() %>" readonly>
                 <!-- alert feedback -->
                 <div class="invalid-feedback">
                   Valid first name is required.
@@ -91,7 +91,7 @@
             <div class="row">
               <div class="form-group col-6">
                 <label for="field-applicant">신청인</label>
-                <input type="text" class="form-control" id="field-applicant" name="user_name" placeholder="" value="<%=result.getUser_name() %>" required>
+                <input type="text" class="form-control" id="field-applicant" name="user_name" placeholder="" value="<%=result.getUser_name() %>" readonly>
                 <!-- alert feedback -->
                 <div class="invalid-feedback">
                   Valid first name is required.
@@ -99,7 +99,7 @@
               </div>
               <div class="form-group col-6">
                 <label for="field-phone">연락처</label>
-                <input type="text" class="form-control" id="field-phone" name="phone_num" placeholder="" value="<%=result.getPhone_num() %>" required>
+                <input type="text" class="form-control" id="field-phone" name="phone_num" placeholder="" value="<%=result.getPhone_num() %>" readonly>
                 <!-- alert feedback -->
                 <div class="invalid-feedback">
                   Valid last name is required.
@@ -114,7 +114,7 @@
               </div>
               <div class="form-group col-6">
                 <label for="field-statis">완료시간</label>
-                <% if(result.getCk_date() == "null"){ %>              
+                <% if(result.getCk_date() == null){ %>              
                 	 <input type="text" class="form-control" id="field-status" name="ck_date" value="-" readonly>
                 <% }else { %>
                 	<input type="text" class="form-control" id="field-status" name="ck_date" value="<%=result.getCk_date() %>" readonly>
@@ -131,7 +131,13 @@
             </div>
             <div class="form-group">
               <label for="field-textarea">상담 처리 결과</label>
-              <textarea class="form-control" id="field-textarea" name="call_result" rows="4" placeholder=""><%=result.getCall_result() %></textarea>
+              <textarea class="form-control" id="field-textarea" name="call_result" rows="4" placeholder="">
+              <%if(result.getCall_result() == null) { %>
+              -
+              <%}else{ %>
+              <%=result.getCall_result() %>
+              <%} %>
+              </textarea>
               
               <!-- alert feedback -->
               <div class="invalid-feedback">
@@ -139,16 +145,26 @@
               </div>
             </div>                
 
+            <!-- 버튼 영역 
+            <div class="d-flex justify-content-between">
+              <div>
+                <input type="submit" class="btn btn-danger" value="상담하기" formaction="updateCon.do" > 
+              <div>
+                <input type="submit" class="btn btn-primary ml-2" value = "상담완료" formaction = "updateCon.do">
+                <button type="button" class="btn btn-secondary ml-2" onclick="location.href='board_list.jsp' ">목록으로</button>
+              </div>-->
+              
             <!-- 버튼 영역 -->
             <div class="d-flex justify-content-between">
               <div>
-                <button type="button" class="btn btn-danger" onclick="#">삭제하기</button>
+                 <input type="submit" class="btn btn-danger" value="상담하기" formaction="updateCon.do" > 
               </div>
               <div>
-                <button type="submit" class="btn btn-primary ml-2">상담완료</button>
-                <button type="button" class="btn btn-secondary ml-2" onclick="location.href='board_list.jsp' ">목록으로</button>
+                <input type="submit" class="btn btn-primary ml-2" value = "상담완료" formaction = "updateCon.do">
+                <a href="board_list.jsp" class="btn btn-secondary ml-2">목록으로</a>
               </div>
             </div>
+            
           </form>
 
           <!-- //bodyContent -->

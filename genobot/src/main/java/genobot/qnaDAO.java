@@ -69,14 +69,21 @@ public class qnaDAO {
 		return cnt;
 	}
 
-	public int Update(String call_result, int boardnum) {
+	public int Update(String call_state, String call_result, int boardnum) {
 
 	
 		try {
 			getConn();
-
-			sql = "update call_list set call_state = '상담완료', ck_date=sysdate(), call_result=? where boardnum=?";
-
+			
+			if(call_state.equals("상담대기")) {
+				sql = "update call_list set call_state = '상담중', call_result=? where boardnum=?";				
+			} else{
+				sql = "update call_list set call_state = '상담완료', ck_date=sysdate(), call_result=? where boardnum=?";
+				
+			}
+			
+			System.out.println("왜 안돼?"+call_result);
+			System.out.println(sql);
 			psmt = conn.prepareStatement(sql);
 			
 			psmt.setString(1, call_result);
@@ -91,6 +98,7 @@ public class qnaDAO {
 		}
 		return cnt;
 	}
+	
 	public ArrayList<qnaVO> select() {
 		ArrayList<qnaVO> arr = new ArrayList<qnaVO>();
 		try {
